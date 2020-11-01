@@ -1,5 +1,6 @@
 package com.reactnativedeviceuptime
 
+import android.os.SystemClock
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
@@ -11,14 +12,11 @@ class DeviceUptimeModule(reactContext: ReactApplicationContext) : ReactContextBa
         return "DeviceUptime"
     }
 
-    // Example method
-    // See https://facebook.github.io/react-native/docs/native-modules-android
     @ReactMethod
-    fun multiply(a: Int, b: Int, promise: Promise) {
-    
-      promise.resolve(a * b)
-    
+    fun getUptime(promise: Promise) {
+      var uptime = SystemClock.elapsedRealtime().toString()
+      promise.resolve(uptime)
     }
 
-    
+
 }
