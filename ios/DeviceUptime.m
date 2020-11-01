@@ -1,19 +1,14 @@
 #import "DeviceUptime.h"
+#import <React/RCTLog.h>
 
 @implementation DeviceUptime
 
 RCT_EXPORT_MODULE()
 
-// Example method
-// See // https://facebook.github.io/react-native/docs/native-modules-ios
-RCT_REMAP_METHOD(multiply,
-                 multiplyWithA:(nonnull NSNumber*)a withB:(nonnull NSNumber*)b
-                 withResolver:(RCTPromiseResolveBlock)resolve
-                 withRejecter:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(getUptime:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 {
-  NSNumber *result = @([a floatValue] * [b floatValue]);
-
-  resolve(result);
+  NSTimeInterval uptime = [[NSProcessInfo processInfo] systemUptime];
+  resolve([NSString stringWithFormat:@"%f", uptime]);  
 }
 
 @end
