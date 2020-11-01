@@ -1,7 +1,7 @@
 {
   "name": "react-native-device-uptime",
-  "version": "0.1.0",
-  "description": "todo",
+  "version": "1.0.0",
+  "description": "A simple library to tell you your iOS or Android device's uptime",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/src/index.d.ts",

@@ -1,17 +1,19 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import DeviceUptime from 'react-native-device-uptime';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
+  const [uptime, setUptime] = useState<string | null>(null);
 
-  React.useEffect(() => {
-    DeviceUptime.multiply(3, 7).then(setResult);
+  useEffect(() => {
+    DeviceUptime.getUptime().then((nativeUptime) => setUptime(nativeUptime));
   }, []);
+
+  if (!uptime) return null;
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Text>{`Device uptime is ${uptime}`}</Text>
     </View>
   );
 }

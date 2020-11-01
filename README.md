@@ -1,6 +1,10 @@
 # react-native-device-uptime
 
-todo
+A simple library to tell you your iOS or Android device's uptime (ie. the amount of time the system has been awake since the last time it was restarted).
+
+On iOS, it wraps the [systemUptime](https://developer.apple.com/documentation/foundation/nsprocessinfo/1414553-systemuptime) property.
+
+On Android, it uses the [elapsedRealtime](https://developer.android.com/reference/android/os/SystemClock#elapsedRealtime()) method.
 
 ## Installation
 
@@ -15,7 +19,7 @@ import DeviceUptime from "react-native-device-uptime";
 
 // ...
 
-const result = await DeviceUptime.multiply(3, 7);
+const uptime = await DeviceUptime.getUptime();
 ```
 
 ## Contributing
